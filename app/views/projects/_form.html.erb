@@ -1,0 +1,49 @@
+<!-- This statement allows the form to be submitted -->
+
+ <%= form_for(@project, :html => { :multipart =>true}) do |f| %>
+
+<!-- This seems to be code for delivering error messages -->
+
+ <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+     <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!-- Error message code ends here .... This seems to be code for delivering error messages -->
+
+<!-- The section below contains all the inputs to the form -->
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.collection_select :priority, 
+ 		Project.priority_name_options, 
+		:first, :last%>
+  </div>
+  <div class="field">
+    <%= f.label :due %><br />
+    <%= f.datetime_select :due %>
+  </div>
+
+	<div class ="field">
+		<%= f.label :image %><br />
+		<%= f.file_field :image%>
+	</div>
+
+
+<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

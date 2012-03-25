@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tasks</title>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="wrapper">
+		<nav>
+			<ul>
+				<li><%= link_to "Projects", projects_path %></li>
+			</ul>
+		</nav>
+
+<%= yield %>
+
+</body>
+</html>
